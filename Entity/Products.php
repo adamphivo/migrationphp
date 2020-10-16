@@ -13,7 +13,7 @@ class Products
     public $MSRP;
 
     /**
-     * @db type=varchar isPrimary=true
+     * @db type=varchar(255) isPrimary=true
      */
     public $productCode;
 
@@ -23,22 +23,22 @@ class Products
     public $productDescription;
 
     /**
-     * @db type=varchar isMUL=true
+     * @db type=varchar(255) isForeign=productlines
      */
     public $productLine;
 
     /**
-     * @db type=varchar
+     * @db type=varchar(255)
      */
     public $productName;
 
     /**
-     * @db type=varchar
+     * @db type=varchar(255) 
      */
     public $productScale;
 
     /**
-     * @db type=varchar
+     * @db type=varchar(255)
      */
     public $productVendor;
 

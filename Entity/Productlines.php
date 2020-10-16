@@ -13,12 +13,12 @@ class Productlines
     public $image;
 
     /**
-     * @db type=varchar isPrimary=true
+     * @db type=varchar(255) isPrimary=true
      */
     public $productLine;
 
     /**
-     * @db type=varchar default=NULL isNullable=true
+     * @db type=varchar(255) default=NULL isNullable=true
      */
     public $textDescription;
 }

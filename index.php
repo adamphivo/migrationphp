@@ -1,14 +1,38 @@
 <?php
 // Migration Script
-// Includes and auto-load
+
 include "PDO.php";
 include "Migration.php";
+
+// Any class in Entity/ will be added
 spl_autoload_register(function ($class) {
     include 'Entity/' . $class . '.php';
 });
 
 // Main Script
-$migration = new Migration($pdo, Products::class, Productlines::class);
 
+/**
+ * USAGE :
+ * 
+ * 1. Create a new Migration object.
+ * 
+ * PROPERTIES :
+ * $migration = new Migration(object $pdo, ...$classes)
+ * 
+ * - $pdo  is your PDO Object
+ * - ...$classes are your classes name (ClassName::class) separated by commas.
+ * 
+ * 2. $migration->makeMigration()
+ * 
+ * FOREIGN KEYS:
+ * 
+ * - Parent class must be created before chil class
+ * 
+ * - Once created can't delete them [?]
+ * 
+ */
+
+
+$migration = new Migration($pdo, Productlines::class, Products::class);
 $migration->makeMigration();
 
