@@ -1,6 +1,5 @@
 <?php
 // Migration Script
-
 include "PDO.php";
 include "Migration.php";
 

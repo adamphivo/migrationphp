@@ -1,5 +1,4 @@
 <?php
-
 // Props
 $host = 'localhost';
 $db = 'practicemigration'; 

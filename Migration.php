@@ -36,10 +36,11 @@ final class Migration
                 foreach($configs as $config){
                     foreach($config as $name => $value){
                         $name == "type" ? $query .= $value : NULL;
+                        $name == "default" ? $query .= " DEFAULT " . $value : NULL;
                         $name == "isNullable" && $value == "true" ? $query .= " NULL" : $query .= " NOT NULL";
                     }
                 }
-                // Make the SQL Request
+                // Make the first SQL Request
                 $this->makeRequest($query);
 
                 // Add special keys
@@ -49,6 +50,7 @@ final class Migration
                         $query = "ALTER TABLE ".$tableName." ADD PRIMARY KEY (".$columnName.")";
                         $this->makeRequest($query);
                     }
+                    
                     // Foreign keys
                     if(array_key_exists("isForeign", $config)){
                         $query = "ALTER TABLE ".strtolower($tableName)." ADD FOREIGN KEY (".$columnName.")".

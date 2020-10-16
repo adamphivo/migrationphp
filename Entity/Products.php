@@ -1,9 +1,8 @@
 <?php
-
 class Products 
 {
     /**
-     * @db type=double
+     * @db type=double 
      */
     public $buyPrice;
 
