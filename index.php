@@ -16,7 +16,7 @@ spl_autoload_register(function ($class) {
  * 
  *  ANNOTATIONS :
  *  
- *  @db type=type(size) [ isPrimary=true isForeign=parentClass ]
+ *  @db type=type(size) [ isPrimary=true isForeign=parentClass isNullable=true]
  *
  * 
  * 1. Create a new Migration object.
