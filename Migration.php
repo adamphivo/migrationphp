@@ -23,7 +23,7 @@ final class Migration
     {
         // we add a "mock" (necessary) column that will be removed later during
         // the migration process
-        $queryString = "CREATE TABLE ".strtower($tableName)." (mock INT)";
+        $queryString = "CREATE TABLE ".strtolower($tableName)." (mock INT)";
         $this->makeRequest($queryString);
     }
 
