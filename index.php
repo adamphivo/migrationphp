@@ -14,9 +14,15 @@ spl_autoload_register(function ($class) {
 /**
  * USAGE :
  * 
+ *  ANNOTATIONS :
+ *  
+ *  @db type=type(size) [ isPrimary=true isForeign=parentClass ]
+ *
+ * 
  * 1. Create a new Migration object.
  * 
  * PROPERTIES :
+ * 
  * $migration = new Migration(object $pdo, ...$classes)
  * 
  * - $pdo  is your PDO Object
@@ -26,7 +32,7 @@ spl_autoload_register(function ($class) {
  * 
  * FOREIGN KEYS:
  * 
- * - Parent class must be created before chil class
+ * - Parent class must be created before child class
  * 
  * - Once created can't delete them [?]
  * 
