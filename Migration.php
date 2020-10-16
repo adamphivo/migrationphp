@@ -40,9 +40,9 @@ final class Migration
     private function createColumns(string $tableName, object $class) : int 
     {
         foreach($this->getProperties($class) as $props){
-            foreach($props as $propName => $configs){
+            foreach($props as $columnName => $configs){
                 // we build the query string
-                $queryString = "ALTER TABLE ".$tableName." ADD ".$propName." ";
+                $queryString = "ALTER TABLE ".$tableName." ADD ".$columnName." ";
                 // we now add the column configuration
                 foreach($configs as $config){
                     foreach($config as $name => $value){
