@@ -21,9 +21,8 @@ final class Migration
         return $this;
     }
 
-    private function createTable(string $tableName) : int
+    private function createTable(string $tableName)
     {
-
         $queryString = "CREATE TABLE ".strtower($tableName)." (mock INT)";
         $this->makeRequest($queryString);
     }
@@ -55,6 +54,7 @@ final class Migration
             return 1;
         } else {
             print_r($query->errorInfo());
+            // helps us debug by printing the bad query string
             print_r($queryString."\n");
             return 0;
         }
