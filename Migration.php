@@ -36,13 +36,15 @@ final class Migration
                     foreach($config as $name => $value){
                         $name == "type" && $value != "varchar" ? $queryString .= $value : NULL;
                         $name == "type" && $value == "varchar" ? $queryString .= $value."(255)" : NULL;
-                        $name == "isNullable" && $value == "true" ? $queryString .= " NULL" : NULL; 
+                        $name == "isNullable" && $value == "true" ? $queryString .= " NULL" : $queryString .= " NOT NULL"; 
                     }
                 }
                 // We can now make the SQL request
                 $this->makeRequest($queryString);
             }
         }
+        // we can now delete the mock column
+        $this->makeRequest("ALTER TABLE ".strtolower($tableName)." DROP COLUMN mock");
     }
 
     private function makeRequest(string $queryString) : int
