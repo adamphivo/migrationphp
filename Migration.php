@@ -12,12 +12,10 @@ final class Migration
     public function makeMigration() : self
     {
         $classesToMigrate = [$this->products, $this->productlines];
-
         foreach($classesToMigrate as $class){
             $this->createTable($this->getName($class));
             $this->createColumns($this->getName($class), $class);
         }
-
         return $this;
     }
 
