@@ -23,21 +23,12 @@ final class Migration
 
     private function createTable(string $tableName) : int
     {
-        /**
-         * Creates the table and adds a "mock" (necessary) column that will be
-         * removed later during the migration process.
-         */
 
-        $query = $this->pdo->prepare("CREATE TABLE ".strtolower($tableName)." (mock INT)");
-        if($query->execute()){
-            return 1;
-        } else {
-            print_r($query->errorInfo());
-            return 0;
-        }
+        $queryString = "CREATE TABLE ".strtower($tableName)." (mock INT)";
+        $this->makeRequest($queryString);
     }
 
-    private function createColumns(string $tableName, object $class) : int 
+    private function createColumns(string $tableName, object $class)
     {
         foreach($this->getProperties($class) as $props){
             // we build the query string
@@ -52,13 +43,12 @@ final class Migration
                     }
                 }
                 // We can now make the SQL request
-                $this->makeColumnQuery($queryString);
+                $this->makeRequest($queryString);
             }
         }
-        return 1;
     }
 
-    private function makeColumnQuery(string $queryString) : int
+    private function makeRequest(string $queryString) : int
     {
         $query = $this->pdo->prepare($queryString);
         if($query->execute()){
