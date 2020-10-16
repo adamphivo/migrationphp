@@ -2,17 +2,15 @@
 
 final class Migration 
 {
-    public function __construct(PDO $pdo)
+    public function __construct(PDO $pdo, ...$classes)
     {
         $this->pdo = $pdo;
-        $this->products = new Products();
-        $this->productlines = new Productlines();
+        $this->classes = $classes;
     } 
 
     public function makeMigration() : self
     {
-        $classesToMigrate = [$this->products, $this->productlines];
-        foreach($classesToMigrate as $class){
+        foreach($this->classes as $class){
             $this->createTable($this->getName($class));
             $this->createColumns($this->getName($class), $class);
         }
@@ -27,7 +25,7 @@ final class Migration
         $this->makeRequest($queryString);
     }
 
-    private function createColumns(string $tableName, object $class)
+    private function createColumns(string $tableName, string $class)
     {
         foreach($this->getProperties($class) as $props){
             foreach($props as $columnName => $configs){

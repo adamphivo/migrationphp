@@ -8,7 +8,7 @@ spl_autoload_register(function ($class) {
 });
 
 // Main Script
-$migration = new Migration($pdo);
+$migration = new Migration($pdo, Products::class, Productlines::class);
 
 $migration->makeMigration();
 
